@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.mjc.translate.DBHelper;
 import com.mjc.translate.R;
 
+import java.util.ArrayList;
+
 public class LatestTransActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -54,6 +56,7 @@ public class LatestTransActivity extends AppCompatActivity {
         try {
             cursor.moveToFirst();
             countTextView.setText(cursor.getCount() + "개의 기록이 있습니다.");
+            ArrayList<LatestRecyclerViewItem> items = new ArrayList<>();
             while (!cursor.isAfterLast()) {
                 LatestRecyclerViewItem item = new LatestRecyclerViewItem();
                 item.setId(cursor.getInt(0));
@@ -61,8 +64,11 @@ public class LatestTransActivity extends AppCompatActivity {
                 item.setOutput(cursor.getString(2));
                 item.setLanguage(cursor.getString(3));
                 item.setToLanguage(cursor.getString(4));
-                adapter.addItem(item);
+                items.add(item);
                 cursor.moveToNext();
+            }
+            for (int i = items.size() - 1; i >= 0; i--) {
+                adapter.addItem(items.get(i));
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {

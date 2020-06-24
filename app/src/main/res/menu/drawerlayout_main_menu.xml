@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/main_menu_engTrans"
-        android:title="　 - 　영어 > 다른 언어" />
+        android:icon="@drawable/icon_eng"
+        android:id="@+id/main_menu_home"
+        android:title="홈" />
     <item
-        android:id="@+id/main_menu_jpnTrans"
-        android:title="　 - 　일본어 > 다른 언어" />
-    <item
-        android:id="@+id/main_menu_zhTrans"
-        android:title="　 - 　중국어 > 다른 언어" />
-    <item
+        android:icon="@drawable/icon_diary"
         android:id="@+id/main_menu_latestTrans"
-        android:title="　 - 　최근 번역" />
+        android:title="번역 기록" />
+    <item
+        android:icon="@drawable/icon_setting"
+        android:id="@+id/main_menu_setting"
+        android:title="설정" />
 </menu>
