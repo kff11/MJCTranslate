@@ -1,5 +1,7 @@
 package com.mjc.translate.korTrans;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +18,9 @@ import androidx.fragment.app.Fragment;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.mjc.translate.DBHelper;
 import com.mjc.translate.R;
+import com.mjc.translate.SharedPreference;
 import com.mjc.translate.config.Papago;
 
 import java.io.BufferedReader;
@@ -32,6 +36,7 @@ public class KorToEngFragment extends Fragment implements View.OnClickListener {
     private TextView outputText;
     private BootstrapButton submitButton;
     private String inputString;
+    private String outputString;
     private String result;
 
     private View view;
@@ -40,7 +45,6 @@ public class KorToEngFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_kortoeng, container, false);
-
         layoutInit();
 
         return view;
@@ -118,8 +122,10 @@ public class KorToEngFragment extends Fragment implements View.OnClickListener {
                         "[오류 코드: " + element.getAsJsonObject().get("errorCode").getAsString() + "]");
             } else if (element.getAsJsonObject().get("message") != null) {
                 // 번역 결과 출력
-                outputText.setText(element.getAsJsonObject().get("message").getAsJsonObject().get("result")
-                        .getAsJsonObject().get("translatedText").getAsString());
+                outputString = element.getAsJsonObject().get("message").getAsJsonObject().get("result")
+                        .getAsJsonObject().get("translatedText").getAsString();
+                outputText.setText(outputString);
+                DBHelper.addLatestTrans(inputString, outputString, "한국어", "영어", getContext());
             }
 
         }

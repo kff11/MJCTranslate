@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.mjc.translate.DBHelper;
 import com.mjc.translate.R;
 import com.mjc.translate.config.Papago;
 import com.mjc.translate.jpnTrans.JpnToKorFragment;
@@ -34,6 +35,7 @@ public class ZhToEngFragment extends Fragment implements View.OnClickListener {
     private BootstrapButton submitButton;
     private String inputString;
     private String result;
+    private String outputString;
 
     private View view;
 
@@ -119,8 +121,10 @@ public class ZhToEngFragment extends Fragment implements View.OnClickListener {
                         "[오류 코드: " + element.getAsJsonObject().get("errorCode").getAsString() + "]");
             } else if (element.getAsJsonObject().get("message") != null) {
                 // 번역 결과 출력
-                outputText.setText(element.getAsJsonObject().get("message").getAsJsonObject().get("result")
-                        .getAsJsonObject().get("translatedText").getAsString());
+                outputString = element.getAsJsonObject().get("message").getAsJsonObject().get("result")
+                        .getAsJsonObject().get("translatedText").getAsString();
+                outputText.setText(outputString);
+                DBHelper.addLatestTrans(inputString, outputString, "중국어", "영어", getContext());
             }
 
         }

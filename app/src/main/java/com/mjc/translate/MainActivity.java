@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.mjc.translate.Latest.LatestTransActivity;
 import com.mjc.translate.korTrans.KorToEngFragment;
 import com.mjc.translate.korTrans.KorToJpnFragment;
 import com.mjc.translate.korTrans.KorToZhFragment;
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.main_menu_zhTrans:
                         intent = new Intent(getApplicationContext(), ZhTransActivity.class);
+                        break;
+                    case R.id.main_menu_latestTrans:
+                        intent = new Intent(getApplicationContext(), LatestTransActivity.class);
                         break;
                 }
                 startActivity(intent);
