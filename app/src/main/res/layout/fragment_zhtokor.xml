@@ -7,8 +7,58 @@
     android:orientation="vertical"
     tools:context=".zhTrans.ZhToKorFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fa" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp">
+
+        <EditText
+            android:id="@+id/zhToKor_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/view_radius_memo"
+            android:elevation="2dp"
+            android:gravity="top"
+            android:textColor="#000"
+            android:hint="텍스트 입력"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/zhToKor_output"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/view_radius_memo"
+
+            android:elevation="2dp"
+            android:gravity="top"
+            android:lineSpacingExtra="12sp"
+            android:padding="20dp"
+            android:textColor="#000"
+            android:text="번역"
+            android:textSize="20sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/zhToKor_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="2dp"
+            android:onClick="onClick"
+            android:text="번역하기"
+            app:bootstrapBrand="info"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:roundedCorners="true"
+            app:showOutline="false" />
+
+
+    </LinearLayout>
 </LinearLayout>

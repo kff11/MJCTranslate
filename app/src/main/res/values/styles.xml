@@ -10,9 +10,7 @@
         <item name="android:fontFamily">@font/kopubmedium</item>
         <item name="android:windowBackground">@color/mainColor</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="colorControlNormal">#F9F9F9</item>
-
-
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
     </style>
 
     <style name="menuTextSize" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
