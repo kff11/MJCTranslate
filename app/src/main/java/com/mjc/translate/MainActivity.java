@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         drawerLayout = findViewById(R.id.main_drawer_layout);
 
-
         layoutInit();
         bottomNavInit();
     }
@@ -98,15 +97,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 switch (item.getItemId()) {
-                    case R.id.navigation_eng: {
+                    case R.id.navigation_korToEng: {
                         transaction.replace(R.id.main_framelayout, korToEngFragment).commitAllowingStateLoss();
                         break;
                     }
-                    case R.id.navigation_jpn: {
+                    case R.id.navigation_korToJpn: {
                         transaction.replace(R.id.main_framelayout, korToJpnFragment).commitAllowingStateLoss();
                         break;
                     }
-                    case R.id.navigation_zh: {
+                    case R.id.navigation_korToZh: {
                         transaction.replace(R.id.main_framelayout, korToZhFragment).commitAllowingStateLoss();
                         break;
                     }

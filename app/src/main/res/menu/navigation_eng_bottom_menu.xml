@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_korToEng"
+        android:id="@+id/navigation_engToKor"
         android:icon="@drawable/icon_eng"
-        android:title="영어" />
+        android:title="한국어" />
 
     <item
-        android:id="@+id/navigation_korToJpn"
+        android:id="@+id/navigation_engToJpn"
         android:icon="@drawable/icon_jpn"
         android:title="일본어" />
 
     <item
-        android:id="@+id/navigation_korToZh"
+        android:id="@+id/navigation_engToZh"
         android:icon="@drawable/icon_jpn"
         android:title="중국어" />
 </menu>
