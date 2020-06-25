@@ -62,6 +62,7 @@ public class LatestRecyclerViewAdapter extends RecyclerView.Adapter<LatestRecycl
         private ViewGroup layout;
         private DBHelper dbHelper;
         private SQLiteDatabase db;
+        private Intent intent;
 
         ItemViewHolder(View itemView) {
             super(itemView);
@@ -77,10 +78,26 @@ public class LatestRecyclerViewAdapter extends RecyclerView.Adapter<LatestRecycl
             output.setText(item.getOutput());
             language.setText(item.getLanguage());
             toLanguage.setText(item.getToLanguage());
+            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    alertDialog(context, item);
+                    return false;
+                }
+            });
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    alertDialog(context, item);
+                    String[] values = {
+                            input.getText().toString(),
+                            output.getText().toString(),
+                            language.getText().toString(),
+                            toLanguage.getText().toString()
+                    };
+                    intent = new Intent(context, LatestTransSelectActivity.class);
+                    intent.putExtra("values", values);
+                    context.startActivity(intent);
+                    ((LatestTransActivity) context).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 }
             });
 
