@@ -3,7 +3,9 @@ package com.mjc.translate.Setting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -41,6 +43,10 @@ public class FontSizeActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                // seekBar 움직일 시 작은 진동
+                vibrator.vibrate(100);
+
                 fontSize = (progress + 3) * 5;
                 previewTextView.setTextSize(fontSize);
                 _setResult(fontSize);
@@ -72,7 +78,7 @@ public class FontSizeActivity extends AppCompatActivity {
     }
 
     private void _setResult(int progress) {
-        switch (progress){
+        switch (progress) {
             case 15:
                 resultTextView.setText("작게");
                 break;

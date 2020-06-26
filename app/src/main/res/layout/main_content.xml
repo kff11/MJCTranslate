@@ -44,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/view_radius_storke"
-                android:elevation="2dp"
+                android:background="@drawable/view_radius_setting"
+                android:elevation="5dp"
                 android:entries="@array/language"
                 android:padding="5dp" />
 
@@ -61,8 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:background="@drawable/view_radius_storke"
-                android:elevation="2dp"
+                android:background="@drawable/view_radius_setting"
+                android:elevation="5dp"
                 android:entries="@array/toLanguage"
                 android:padding="5dp" />
         </LinearLayout>
@@ -71,10 +71,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingHorizontal="10dp"
             android:paddingVertical="20dp">
 
             <EditText
+                android:layout_marginHorizontal="10dp"
                 android:id="@+id/main_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,6 +90,8 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:layout_marginHorizontal="10dp"
+
                 android:id="@+id/main_output"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -103,6 +105,8 @@
                 android:textSize="20sp" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_marginHorizontal="10dp"
+
                 android:id="@+id/main_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
