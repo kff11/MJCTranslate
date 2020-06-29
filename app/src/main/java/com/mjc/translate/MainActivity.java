@@ -184,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
 
     // 백그라운드에서 파파고 API 사용!
     class BackgroundTask extends AsyncTask<Integer, Integer, Integer> {
-        protected void onPreExecute() {
-        }
 
         @Override
         protected Integer doInBackground(Integer... arg0) {
@@ -193,18 +191,18 @@ public class MainActivity extends AppCompatActivity {
             String clientId = Papago.getClientId(); // 애플리케이션 클라이언트 아이디 값";
             String clientSecret = Papago.getClientSecret(); // 애플리케이션 클라이언트 시크릿 값";
             try {
-                // 번역문을 UTF-8으로 인코딩합니다.
+                // 번역문을 UTF-8으로 인코딩
                 String text = URLEncoder.encode(inputString, "UTF-8");
                 String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
 
-                // 파파고 API와 연결을 수행합니다.
+                // 파파고 API와 연결!
                 URL url = new URL(apiURL);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
                 con.setRequestProperty("X-Naver-Client-Id", clientId);
                 con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
 
-                // 번역할 문장을 파라미터로 전송합니다.
+                // 번역할 문장과 언어를 파라미터로 전송
                 String postParams = "source=" + languageCode + "&target=" + toLanguageCode + "&text=" + text;
                 con.setDoOutput(true);
                 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
@@ -212,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 wr.flush();
                 wr.close();
 
-                // 번역 결과를 받아옵니다.
+                // 번역 결과를 받아옴
                 int responseCode = con.getResponseCode();
                 BufferedReader br;
                 if (responseCode == 200) {
@@ -251,6 +249,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+        protected void onPreExecute() {
+        }
+
 
     }
 

@@ -51,12 +51,10 @@ public class LatestTransActivity extends AppCompatActivity {
 
     private void getItem() {
         db.beginTransaction();
-        cursor = db.rawQuery("SELECT * FROM latestTrans", null);
-
+        cursor = db.rawQuery("SELECT * FROM latestTrans ORDER BY id DESC", null);
         try {
             cursor.moveToFirst();
             countTextView.setText(cursor.getCount() + "개의 기록이 있습니다.");
-            ArrayList<LatestRecyclerViewItem> items = new ArrayList<>();
             while (!cursor.isAfterLast()) {
                 LatestRecyclerViewItem item = new LatestRecyclerViewItem();
                 item.setId(cursor.getInt(0));
@@ -64,11 +62,8 @@ public class LatestTransActivity extends AppCompatActivity {
                 item.setOutput(cursor.getString(2));
                 item.setLanguage(cursor.getString(3));
                 item.setToLanguage(cursor.getString(4));
-                items.add(item);
+                adapter.addItem(item);
                 cursor.moveToNext();
-            }
-            for (int i = items.size() - 1; i >= 0; i--) {
-                adapter.addItem(items.get(i));
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {

@@ -78,6 +78,7 @@ public class LatestRecyclerViewAdapter extends RecyclerView.Adapter<LatestRecycl
             output.setText(item.getOutput());
             language.setText(item.getLanguage());
             toLanguage.setText(item.getToLanguage());
+
             layout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {

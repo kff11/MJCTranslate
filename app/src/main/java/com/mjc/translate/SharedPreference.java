@@ -13,18 +13,6 @@ public class SharedPreference {
         this.context = context;
     }
 
-    public String getSharedString(String key) {
-        sharedPreferences = context.getSharedPreferences(xmlFileName, Activity.MODE_PRIVATE);
-        String string = sharedPreferences.getString(key, null);
-        return string;
-    }
-
-    public void setSharedString(String key, String string) {
-        sharedPreferences = context.getSharedPreferences(xmlFileName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, string);
-        editor.commit();
-    }
 
     public int getSharedInteger(String key){
         sharedPreferences = context.getSharedPreferences(xmlFileName, Activity.MODE_PRIVATE);
@@ -59,5 +47,19 @@ public class SharedPreference {
         editor.remove(key);
         editor.commit();
     }
+
+    public String getSharedString(String key) {
+        sharedPreferences = context.getSharedPreferences(xmlFileName, Activity.MODE_PRIVATE);
+        String string = sharedPreferences.getString(key, null);
+        return string;
+    }
+
+    public void setSharedString(String key, String string) {
+        sharedPreferences = context.getSharedPreferences(xmlFileName, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, string);
+        editor.commit();
+    }
+
 
 }

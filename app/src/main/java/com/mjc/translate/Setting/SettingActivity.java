@@ -48,7 +48,6 @@ public class SettingActivity extends AppCompatActivity {
 
     private void switchInit() {
         autoSwitch = findViewById(R.id.setting_autoCheck);
-
         autoSwitch.setChecked(sharedPreference.getSharedboolean("autoSave"));
     }
 
